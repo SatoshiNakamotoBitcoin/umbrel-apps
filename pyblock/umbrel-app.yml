@@ -1,0 +1,27 @@
+manifestVersion: 1
+id: pyblock
+category: Bitcoin and Lightning Node Management
+name: LNDg
+version: "2.0.12"
+tagline: Bitcoin and Lightning Node management
+description: PyBLOCK
+developer: PyBLOCK
+website: https://github.com/
+dependencies:
+  - lightning
+repo: https://github.com/
+support: PyBLOCK
+port: 7777
+gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+path: ""
+defaultUsername: lndg-admin
+deterministicPassword: true
+releaseNotes: >-
+  - PyBLOCK
+  
+  - And more... Full details can be found here: PyBLOCK
+submitter: PyBLOCK
+submission: PyBLOCK
