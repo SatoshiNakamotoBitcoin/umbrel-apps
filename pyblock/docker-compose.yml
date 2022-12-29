@@ -1,0 +1,23 @@
+version: "2.0.12"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: $APP_PYBLOCK_IP
+      APP_PORT: $APP_PYBLOCK_PORT
+
+  web:
+    image: 
+    restart: on-failure
+    stop_grace_period: 1m
+    init: true
+    volumes:
+      - ${APP_LIGHTNING_NODE_DATA_DIR}:/root/.lnd:ro
+      - ${APP_DATA_DIR}:/pyblock/data
+    command:
+      - sh
+      - -c
+      - python initialize.py -net '${APP_BITCOIN_NETWORK}' -server '${APP_LIGHTNING_NODE_IP}:${APP_LIGHTNING_NODE_GRPC_PORT}' -pw '${APP_PASSWORD}' -d && supervisord && python manage.py runserver 0.0.0.0:${APP_PYBLOCK_PORT}
+    networks:
+      default:
+        ipv4_address: ${APP_PYBLOCK_IP}
